@@ -50,3 +50,5 @@ $.get('page-1.json').then(
     //   $(document).ready(function() {
     //     $('.tab-content').hide();
     //   });
+
+    //
