@@ -1,5 +1,11 @@
 # lab-02-repository
 
+
+Team: 
+1. Joshua Deforrest
+2. Mattaus Sebastian Isenberg
+
+
 For each of the features listed below, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
 Number and name of feature: ________________________________
