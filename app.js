@@ -8,7 +8,7 @@ function HornedAnimal(title, img, description, keyword, horns){
   
   HornedAnimal.prototype.renderWithJquery = function(){
     $('#photo-template').append(`
-      <div>
+      <div class = "first">
         <h2>${this.title}</h2>
         <img src="${this.img}"></img>
         <p>${this.description}</p>
