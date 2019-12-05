@@ -11,7 +11,10 @@
     <select id="horn" name="horn">
       <option value="default">Filter by Keyword</option>
     </select>
-    <button onclick="dataSwitch()">Click me</button>
+    <select id="numberOfHorns" name="numberOfHorns">
+      <option value="default">Filter by Horns</option>
+    </select>
+    <button onclick="dataSwitch()">Switch</button>
   </header>
   <main>
 
@@ -25,7 +28,7 @@
     <section id="horned2">
       <div class="animalContainer2" id="photo-template2">
         <h2></h2>
-        <img src="" alt="">
+        <img src="" alt="" data-horn="">
         <p></p>
       </div>
       </section>
