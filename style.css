@@ -1,48 +1,9 @@
-@import "reset.css";
-
-@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
-
 div{
     float: left;
-    padding: 0;
-    margin: 0;
-    width: 20%;
-    height: 20%;
-}
-div:first-child {
-    display: none;
 }
 
-img{
-    width: 300px;
-    height: 300px;
-    padding: 0;
-    margin: 0;
-    border: 2px solid green;
-}
 
-#horned {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1px;
-}
-
-p {
-    border: 2px solid green;
-    padding: 0;
-    margin: 0;
-    font-family: 'Kanit', sans-serif;
-    position: relative;
-    left: 50px;
-    width: 200px;
-}
-
-h2 {
-    padding: 0;
-    margin: 0;
-    border: 2px solid green;
-    font-family: 'Kanit', sans-serif;
-    position: relative;
-    left: 100px;
-    width: 100px;
+div>img{
+    width: 250px;
+    height: 250px;
 }

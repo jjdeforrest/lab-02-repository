@@ -65,11 +65,11 @@ $.get('page-1.json').then(
     });
 
 $('select[name="horn"]').on('change', function() {
-    let selected = $(this).val();
+    let selection = $(this).val();
     $('img').hide();
     $('h2').hide();
     $('p').hide();
-    $(`img[alt="${selected}"]`).show();
+    $(`img[alt="${selection}"]`).show();
 
 });
       
