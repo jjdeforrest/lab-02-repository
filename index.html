@@ -12,7 +12,6 @@
     <h1>The Gallery of Horns</h1>
     <nav>
         <a href = "second.html">Second Page</a>
-        
       </nav>
 
     <select id="horn" name="horn">
@@ -24,17 +23,21 @@
 
   </header>
 
+  
+
   <main>
 
-    <section id="horned">
-    <div id="photo-template">
+    <section id="horned" type="text/x-handlebars-template">
+    <div id="photo-template" type="text/x-handlebars-template">
       <h2></h2>
-      <img src="" alt="">
+
+      <img src="{{img}}" alt="">
       <p></p>
     </div>
     </section>
 
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="app.js"></script>
