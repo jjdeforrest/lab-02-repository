@@ -1,31 +1,9 @@
-let arrayOfHorns = [];
 
-function populateList() {
-  arrayOfHorns.forEach(function (type) {
-    let selectDD = $('#horn');
-    let option = document.createElement('option');
-    option.value = type;
-    option.text = type;
-    selectDD.append(option);
-  });
-}
-
-function selectFiltering(keyword) {
-  if (!arrayOfHorns.includes(keyword)) {
-    arrayOfHorns.push(keyword);
-  }
-  console.log(`Array is ${arrayOfHorns}`);
-}
-
-
-
-function HornedAnimal(title, img, description, keyword, horns) {
-  this.title = title;
-  this.img = img;
   this.description = description;
   this.keyword = keyword;
   this.horns = horns;
 }
+
 
 HornedAnimal.prototype.renderWithJquery = function () {
   $('#photo-template').append(`
