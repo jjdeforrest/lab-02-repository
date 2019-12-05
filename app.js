@@ -21,24 +21,20 @@ function populateList(){
       hornOption.value = number;
       hornOption.text = number;
       hornDD.append(hornOption);
-      console.log('hornCode');
-    })
+  });
 }
 
-function selectFiltering(keyword, horns){
+
+function selectFiltering(keyword){
     if(!arrayOfAnimals.includes(keyword)){
         arrayOfAnimals.push(keyword);
+    }
+}
 
-        // if(!arrayOfHorns.includes(horns)){
-        //   arrayOfHorns.push(horns);
-        //   console.log('horn filter');
-        // }
-    }
-    if(!arrayOfHorns.includes(horns)){
-      arrayOfHorns.push(horns);
-      console.log('horn filter222');
-    }
-    console.log(`Array is ${arrayOfAnimals}`);
+function hornFiltering(horns){
+  if(!arrayOfHorns.includes(horns)){
+    arrayOfHorns.push(horns);
+  }
 }
 
 
@@ -98,27 +94,31 @@ $.get('page-1.json').then(
     data.forEach(hornedObjFromFile => {
       let hornedAnimal = new HornedAnimal(hornedObjFromFile.title, hornedObjFromFile.image_url, hornedObjFromFile.description, hornedObjFromFile.keyword, hornedObjFromFile.horns);
       hornedAnimal.renderWithJqueryClone();
-      selectFiltering(hornedObjFromFile.keyword, hornedObjFromFile.horns);
+      selectFiltering(hornedObjFromFile.keyword);
+      hornFiltering(hornedObjFromFile.horns);
       dataSetActive = true;
       firstSet.push(hornedAnimal);
       
     });
-    populateList();
+    //populateList();
+    dataSet2();
   });
 
+function dataSet2(){
 $.get('page-2.json').then(
   (data) => {
     console.log(data);
     data.forEach(hornedObjFromFile => {
       let hornedAnimal = new HornedAnimal(hornedObjFromFile.title, hornedObjFromFile.image_url, hornedObjFromFile.description, hornedObjFromFile.keyword, hornedObjFromFile.horns);
       hornedAnimal.renderWithJqueryClone2();
-      selectFiltering(hornedObjFromFile.keyword, hornedObjFromFile.horns);
+      selectFiltering(hornedObjFromFile.keyword);
+      hornFiltering(hornedObjFromFile.horns);
       secondSet.push(hornedAnimal);
   
     });
     populateList();
   });
-
+}
 
 $('select[name="horn"]').on('change', function() {
   const keywordValue = $(this).val();
