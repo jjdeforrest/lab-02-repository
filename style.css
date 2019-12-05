@@ -1,5 +1,10 @@
-div{
-    float: left;
+#horned {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+    align-content: space-between;
+    align-items: baseline;
 }
 
 
@@ -7,3 +12,5 @@ div>img{
     width: 250px;
     height: 250px;
 }
+
+
