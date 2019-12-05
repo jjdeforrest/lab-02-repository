@@ -100,7 +100,6 @@ $.get('page-1.json').then(
       firstSet.push(hornedAnimal);
       
     });
-    //populateList();
     dataSet2();
   });
 
@@ -122,6 +121,9 @@ $.get('page-2.json').then(
 
 $('select[name="horn"]').on('change', function() {
   const keywordValue = $(this).val();
+if (keywordValue === 'default'){
+  $('div').show();
+}else{
   $('div').hide();
 
   $('img').each(function (currentValue, index, array) {
@@ -129,17 +131,22 @@ $('select[name="horn"]').on('change', function() {
       $(this).parent().show();
     }
   });
+}
 });
 
 $('select[name="numberOfHorns"]').on('change', function() {
   const keywordValue = $(this).val();
-  $('div').hide();
+  if(keywordValue === 'default'){
+    $('div').show();
+  }else{
+    $('div').hide();
 
   $('img').each(function (currentValue, index, array) {
     if ($(this).attr('data-horns') === keywordValue) {
       $(this).parent().show();
     }
   });
+  }
 });
     
 function dataSwitch() {
