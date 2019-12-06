@@ -8,6 +8,7 @@ function getThings(page){
   $.get(page, 'json').then(data =>animalsRender(data, page));
 };
 
+
 getThings('page-1.json');
 
 function animalsRender(creaturesArray, page){
@@ -33,6 +34,7 @@ Animals.prototype.onScreen = function(){
 };
 
 $( '#page2' ).on('click', function(){
+
   $('div').hide();
   if(page === 'page-1.json'){
     const divs = $('div[data-page="page-2.json"]');
@@ -51,7 +53,8 @@ $( '#page2' ).on('click', function(){
     }
     divs.show();
     page = 'page-1.json';
-  }
+  
+}
 });
 
 $('#sort').on('click', function(){
