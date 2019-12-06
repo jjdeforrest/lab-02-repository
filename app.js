@@ -4,38 +4,38 @@ let secondSet = [];
 let dataSetActive = false;
 let dsOneRenderStatus = false;
 let dsTwoRenderStatus = false;
+let currentPage;
 
 
-
-function populateList(){
-    arrayOfHorns.forEach(function(type){
-        let selectDD = $('#horn');
-        let option = document.createElement('option');
-        option.value = type;
-        option.text = type;
-        selectDD.append(option);
-    });
+function populateList() {
+  arrayOfHorns.forEach(function (type) {
+    let selectDD = $('#horn');
+    let option = document.createElement('option');
+    option.value = type;
+    option.text = type;
+    selectDD.append(option);
+  });
 }
 
-function selectFiltering(keyword){
-    if(!arrayOfHorns.includes(keyword)){
-        arrayOfHorns.push(keyword);
-    }
-    console.log(`Array is ${arrayOfHorns}`);
-}
-
-
-
-function HornedAnimal(title, img, description, keyword, horns){
-    this.title = title;
-    this.img = img;
-    this.description = description;
-    this.keyword = keyword;
-    this.horns = horns;
+function selectFiltering(keyword) {
+  if (!arrayOfHorns.includes(keyword)) {
+    arrayOfHorns.push(keyword);
   }
-  
-  HornedAnimal.prototype.renderWithJquery = function(){
-    $('#photo-template').append(`
+  // console.log(`Array is ${arrayOfHorns}`);
+}
+
+
+
+function HornedAnimal(title, img, description, keyword, horns) {
+  this.title = title;
+  this.img = img;
+  this.description = description;
+  this.keyword = keyword;
+  this.horns = horns;
+}
+
+HornedAnimal.prototype.renderWithJquery = function () {
+  $('#photo-template').append(`
       <div class = "first">
         <h2>${this.title}</h2>
         <img src="${this.img}"></img>
@@ -43,66 +43,70 @@ function HornedAnimal(title, img, description, keyword, horns){
         <p>Horns: ${this.horns}</p>
       </div>
     `);
-  };
-  
-  HornedAnimal.prototype.renderWithJqueryClone = function(){
-    let clone = $('#photo-template').clone();
-  
-    clone.find('h2').text(this.title);
-    clone.find('img').attr('src', this.img);
-    clone.find('img').attr('alt', this.keyword);
-    clone.find('p').text(this.description);
-    clone.removeAttr('id');
-    console.log(clone);
-    $('horned').empty();
-    $('#horned').append(clone);
-    dsOneRenderStatus = true;
-  };
+};
 
-  HornedAnimal.prototype.renderWithJqueryClone2 = function(){
-    let clone = $('#photo-template2').clone();
-  
-    clone.find('h2').text(this.title);
-    clone.find('img').attr('src', this.img);
-    clone.find('img').attr('alt', this.keyword);
-    clone.find('p').text(this.description);
-    clone.removeAttr('id');
-    console.log(clone);
-    $('#horned2').hide();
-    $('#horned2').append(clone);
-  };
+HornedAnimal.prototype.renderWithJqueryClone = function () {
+  let clone = $('#photo-template').clone();
+
+  clone.find('h2').text(this.title);
+  clone.find('img').attr('src', this.img);
+  clone.find('img').attr('alt', this.keyword);
+  clone.find('p').text(this.description);
+  clone.removeAttr('id');
+  // console.log(clone);
+  $('horned').empty();
+  $('#horned').append(clone);
+  dsOneRenderStatus = true;
+};
+
+HornedAnimal.prototype.renderWithJqueryClone2 = function () {
+  let clone = $('#photo-template2').clone();
+
+  clone.find('h2').text(this.title);
+  clone.find('img').attr('src', this.img);
+  clone.find('img').attr('alt', this.keyword);
+  clone.find('p').text(this.description);
+  clone.removeAttr('id');
+  // console.log(clone);
+  // $('#horned2').hide();
+  $('#horned2').append(clone);
+};
 
 
-
-$.get('page-1.json').then(
-  (data) => {
-    console.log(data);
-    data.forEach(hornedObjFromFile => {
-      let hornedAnimal = new HornedAnimal(hornedObjFromFile.title, hornedObjFromFile.image_url, hornedObjFromFile.description, hornedObjFromFile.keyword, hornedObjFromFile.horns);
-      hornedAnimal.renderWithJqueryClone();
-      selectFiltering(hornedObjFromFile.keyword);
-      dataSetActive = true;
-      firstSet.push(hornedAnimal);
-      
+function getPageOne() {
+  $.get('page-1.json').then(
+    (data) => {
+      // console.log(data);
+      data.forEach(hornedObjFromFile => {
+        let hornedAnimal = new HornedAnimal(hornedObjFromFile.title, hornedObjFromFile.image_url, hornedObjFromFile.description, hornedObjFromFile.keyword, hornedObjFromFile.horns);
+        hornedAnimal.renderWithJqueryClone();
+        selectFiltering(hornedObjFromFile.keyword);
+        //dataSetActive = true;
+        firstSet.push(hornedAnimal);
+      });
+      currentPage = 'page-1.json';
+      populateList();
     });
-    populateList();
-  });
+};
+getPageOne();
 
-$.get('page-2.json').then(
-  (data) => {
-    console.log(data);
-    data.forEach(hornedObjFromFile => {
-      let hornedAnimal = new HornedAnimal(hornedObjFromFile.title, hornedObjFromFile.image_url, hornedObjFromFile.description, hornedObjFromFile.keyword, hornedObjFromFile.horns);
-      hornedAnimal.renderWithJqueryClone2();
-      selectFiltering(hornedObjFromFile.keyword);
-      secondSet.push(hornedAnimal);
-  
+function getPageTwo() {
+  $.get('page-2.json').then(
+    (data) => {
+      // console.log(data);
+      data.forEach(hornedObjFromFile => {
+        let hornedAnimal = new HornedAnimal(hornedObjFromFile.title, hornedObjFromFile.image_url, hornedObjFromFile.description, hornedObjFromFile.keyword, hornedObjFromFile.horns);
+        hornedAnimal.renderWithJqueryClone2();
+        selectFiltering(hornedObjFromFile.keyword);
+        secondSet.push(hornedAnimal);
+      });
+      currentPage = 'page-2.json';
+      populateList();
     });
-    populateList();
-  });
+};
 
 
-$('select[name="horn"]').on('change', function() {
+$('select[name="horn"]').on('change', function () {
   const keywordValue = $(this).val();
   $('div').hide();
 
@@ -113,26 +117,51 @@ $('select[name="horn"]').on('change', function() {
   });
 
 });
-    
+
 function dataSwitch() {
 
-  
-  if (dataSetActive === true){
-    $('#horned').hide();
-    $('#horned2').show();
+  if (dataSetActive === true) {
+    console.log('iamtrue');
+    arrayOfHorns = [];
+    //$('#horned').empty();
+    
+    getPageTwo();
+    // $('#horned2').show();
 
-   dataSetActive = false;
+    dataSetActive = false;
+    console.log(dataSetActive);
 
-  
   }
 
-  else if (dataSetActive === false){
-    $('#horned2').hide();
-       $('#horned').show();
+  else if (dataSetActive === false) {
+    console.log('iamfalse');
+    // $('#horned2').hide();
+    // $('#horned').show();
 
-   dataSetActive = true;
+    dataSetActive = true;
+    arrayOfHorns = [];
+    getPageOne();
   }
 }
 
 
 
+$('#sort').on('click', function () {
+  if (currentPage === 'page-1.json') {
+    firstSet.sort(function (a, b) {
+      if (a.title > b.title) return 1;
+      if (b.title > a.title) return -1;
+      return 0;
+    })
+  } else {
+    console.log(secondSet);
+    secondSet.sort(function (a, b) {
+      if (a.title > b.title) return 1;
+      if (b.title > a.title) return -1;
+      return 0;
+    })
+    console.log(secondSet);
+  }
+  $('div').empty();
+
+});
