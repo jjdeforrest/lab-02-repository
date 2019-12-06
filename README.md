@@ -18,3 +18,19 @@ Finish time: 1200
 
 Actual time needed to complete: 3
 
+1. Joshua Deforrest
+2. Mattaus Sebastian Isenberg
+
+
+For each of the features listed below, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
+
+Number and name of feature: Feature #1: pagination, Feature #2: templating, Feature #3: Style with flexbox #4: sort the images
+
+Estimate of time needed to complete: 3 hours
+
+Start time: thursday
+
+Finish time: friday morning 2am
+
+Actual time needed to complete: 12 hours
+

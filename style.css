@@ -1,9 +1,37 @@
 div{
     float: left;
 }
+main {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    align-items: stretch;
+    align-items: center;
+    justify-content: space-between;
+}
 
+head {
+    display: flex;
+    justify-content: center;
+
+}
+
+p {
+    display: center;
+    font-size: 2em;
+}
+
+
+h2 {
+    font-size: 1em;
+    display: center;
+    text-align: center;
+    
+}
 
 div>img{
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
 }
