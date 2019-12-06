@@ -1,45 +1,26 @@
-<!doctype html>
-<html><head>
-  <title>The Gallery of Horns</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+<!DOCTYPE html>
+<head>
+ <link rel="stylesheet" href="style.css">
+
+  <script id="creature-template" type="text/x-handlebars-template">
+    <div data-page="{{page}}">
+      <h2>{{description}}</h2>
+      <img src="{{image_url}}">
+      <p>{{horns}}</p>
+    </div>
+  </script>
 </head>
 <body>
-  <header>
-    <h1>The Gallery of Horns</h1>
-    <select id="horn" name="horn">
-      <option value="default">Filter by Keyword</option>
-    </select>
-    <select id="numberOfHorns" name="numberOfHorns">
-      <option value="default">Filter by Horns</option>
-    </select>
-    <button onclick="dataSwitch()">Switch</button>
-  </header>
-  <main>
 
-    <section id="horned">
-    <div class="animalContainer" id="photo-template">
-      <h2></h2>
-      <img src="" alt="">
-      <p></p>
-    </div>
-    </section>
-    <section id="horned2">
-      <div class="animalContainer2" id="photo-template2">
-        <h2></h2>
-        <img src="" alt="" data-horn="">
-        <p></p>
-      </div>
-      </section>
-
-  </main>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  <h1>Horned Beasts</h1>
+  <button id="page2">Data Sets</button>
+  <button id="sort">Sort</button>
+<main>
+</main>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="app.js"></script>
-  <footer>
-    
-  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
-
